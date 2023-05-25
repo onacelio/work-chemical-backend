@@ -1,9 +1,7 @@
 const express = require('express');
 const app = express();
 
-// Rota molecules
-app.get('/molecules', (req, res) => {
-    const molecules = [
+const molecules = [
     {
       "name": "metano",
       "iframe": "https://embed.molview.org/v1/?mode=balls&cid=297",
@@ -648,18 +646,16 @@ app.get('/molecules', (req, res) => {
       "id": 82,
       "classe": "Alquino"
     }
-  ]
+]
 
+// Rota molecules
+app.get('/molecules', (req, res) => {
+  // Aqui você pode adicionar a lógica para a rota molecules
   res.json(molecules);
 });
 
-// Rota para outras requisições
-app.all('/molecules', (req, res) => {
-  res.status(405).json({ error: 'Método não permitido. Permitido apenas GET.' });
-});
-
 // Porta para o servidor ouvir
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Inicia o servidor
 app.listen(port, () => {
