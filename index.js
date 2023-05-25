@@ -650,6 +650,7 @@ const molecules = [
 
 // Rota molecules
 app.get('/molecules', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   // Aqui você pode adicionar a lógica para a rota molecules
   res.json(molecules);
 });
